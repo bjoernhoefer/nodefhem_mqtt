@@ -2,7 +2,7 @@ var net = require('net');
 var http = require("http");
 var mqtt = require('mqtt');
 
-// local setting
+// local setting - YOU SHOULD EDIT THIS PART
 var fhem_server = "127.0.0.1"
 var fhem_user = "myuser"
 var fhem_password = "mypassword"
@@ -12,6 +12,9 @@ var fhem_http_port = "4321"
 var mqtt_broker = "127.0.0.1"
 var mqtt_port = 1833
 var mqtt_topic = "fhem"
+
+// local settings end - YOU SHOULD STOP EDITING HERE - except you know what you do ;-)
+
 var mqtt_client = mqtt.connect('mqtt://'+mqtt_broker)
 
 function start_client(){
