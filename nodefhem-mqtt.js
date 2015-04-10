@@ -82,7 +82,6 @@ function get_fhem_data(devicename){
             fhem_type = fhem_data.ResultSet.Results.TYPE;
             fhem_room = fhem_data.ResultSet.Results.ATTRIBUTES.room;
 	    fhem_model = fhem_data.ResultSet.Results.ATTRIBUTES.model;
-	    fhem_modelreadings = fhem_data.ResultSet.Results.READINGS;
 	    
 	    // Change values to better view them in JSON   
 	    
@@ -103,9 +102,8 @@ function get_fhem_data(devicename){
                 fhem_alias="No Alias";
             }
             var data = { device: devicename, state: fhem_state, serial: fhem_serialNr, type: fhem_type, alias: fhem_alias, room: fhem_room, model: fhem_model, commands: webcmds};
-	    
-            //console.log(devicename)
-	    mqtt_client.publish(mqtt_topic, JSON.stringify(data))
+
+	    mqtt_client.publish(mqtt_topic+"/"+fhem_type, JSON.stringify(data))
 	    
 	    
         });
